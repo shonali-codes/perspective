@@ -319,6 +319,59 @@
     font-family:"Spectral",serif;font-size:.82rem;letter-spacing:.05em;color:var(--ivory);
   }
   .announce b{font-weight:600;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* waitlist */
+  .waitlist{
+    border-top:1px solid var(--line);text-align:center;
+    background:radial-gradient(70% 60% at 50% 0%,rgba(201,162,75,.06),transparent 60%),var(--void);
+  }
+  .waitlist h2{font-size:clamp(2rem,6vw,3.2rem);margin-bottom:.2rem}
+  .waitlist .sub{max-width:36rem;margin:1.1rem auto 0;color:var(--dim)}
+  .wl-box{max-width:32rem;margin:2.6rem auto 0;display:flex;flex-direction:column;gap:1.1rem}
+  .wa-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+    padding:1.05rem 1.6rem;border-radius:3px;text-decoration:none;
+    background:var(--gold-grad);color:#1a1206;font-family:"Spectral",serif;font-weight:600;
+    font-size:1.02rem;letter-spacing:.03em;transition:filter .3s ease,transform .2s ease;
+  }
+  .wa-btn:hover,.wa-btn:focus-visible{filter:brightness(1.08);transform:translateY(-1px)}
+  .wl-or{display:flex;align-items:center;gap:1rem;color:var(--dim);font-size:.8rem;letter-spacing:.18em}
+  .wl-or::before,.wl-or::after{content:"";height:1px;flex:1;background:var(--line)}
+  .wl-form{display:flex;gap:.6rem;flex-wrap:wrap}
+  .wl-form input[type=email]{
+    flex:1;min-width:0;padding:.95rem 1.1rem;border-radius:3px;
+    background:rgba(239,231,214,.05);border:1px solid var(--line);color:var(--ivory);
+    font-family:"Spectral",serif;font-size:1rem;
+  }
+  .wl-form input::placeholder{color:rgba(162,151,127,.7)}
+  .wl-form button{
+    padding:.95rem 1.5rem;border-radius:3px;border:1px solid var(--gold);
+    background:rgba(201,162,75,.08);color:var(--gold-hi);cursor:pointer;
+    font-family:"Spectral",serif;font-size:1rem;letter-spacing:.05em;transition:background .3s ease;
+  }
+  .wl-form button:hover,.wl-form button:focus-visible{background:rgba(201,162,75,.18)}
+  .wl-fine{margin-top:1.4rem;color:rgba(162,151,127,.6);font-size:.78rem}
+  .wl-cta{
+    display:inline-block;margin-top:1.9rem;padding:.85rem 1.9rem;border:1px solid var(--gold);
+    border-radius:3px;color:var(--gold-hi);text-decoration:none;font-family:"Spectral",serif;
+    font-size:.95rem;letter-spacing:.1em;transition:background .3s ease;
+  }
+  .wl-cta:hover,.wl-cta:focus-visible{background:rgba(201,162,75,.14)}
+
+  /* tee lineup */
+  .lineup{border-top:1px solid var(--line);text-align:center}
+  .lineup h2{font-size:clamp(1.9rem,5.2vw,3rem)}
+  .lineup .sub{max-width:35rem;margin:1.1rem auto 0;color:var(--dim)}
+  .tee-rail{
+    display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:2.4rem .2rem 1.2rem;margin-top:.6rem;-webkit-overflow-scrolling:touch;
+  }
+  .tee-rail::-webkit-scrollbar{height:6px}
+  .tee-rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+  .tee{flex:0 0 auto;width:min(74vw,300px);scroll-snap-align:center;text-align:center}
+  .tee img{width:100%;display:block;border:1px solid var(--line);border-radius:5px;background:#fff}
+  .tee .nm{margin-top:.85rem;font-family:"Cormorant Garamond",serif;font-size:1.25rem;color:var(--ivory);line-height:1.15}
+  .tee .vd{margin-top:.2rem;font-family:"Spectral",serif;font-style:italic;font-size:.9rem;color:var(--gold)}
   .filmframe{
     margin:3rem auto 0;max-width:920px;position:relative;
     border:1px solid var(--line);padding:.55rem;background:var(--ink);
@@ -356,13 +409,13 @@
 </head>
 <body>
 
-<div class="announce" role="note">
-  <span>The <b>11&nbsp;Maharanis</b> collection lands</span>
+<a class="announce" href="#waitlist">
+  <span>The <b>11&nbsp;Maharanis</b> tees drop</span>
   <span class="dot">·</span>
   <span>Durga&nbsp;Puja&nbsp;2026</span>
   <span class="dot">·</span>
-  <span>coming soon</span>
-</div>
+  <span>join the waitlist</span>
+</a>
 
 <header class="site-head">
   <a class="mark" href="#top" aria-label="PERSPECTIVE home">
@@ -525,6 +578,22 @@
         <p>The involuntary deed her lens produces, named plainly—so you can watch the reflex before it owns you.</p>
       </div>
     </div>
+    <a class="wl-cta" href="#waitlist">Join the waitlist</a>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="movement waitlist" id="waitlist" aria-label="Join the waitlist">
+    <span class="status"><span class="pulse" aria-hidden="true"></span>Not yet live</span>
+    <h2>Join the <span class="gold">Waitlist</span></h2>
+    <p class="sub">The 11 Maharanis tees drop this Durga Puja 2026. Join to get first access, the full lookbook, and early-bird pricing before the public drop.</p>
+    <div class="wl-box">
+      <form class="wl-form" action="https://formspree.io/f/myezdvwl" method="POST">
+        <input type="email" name="email" required placeholder="you@email.com" aria-label="Your email">
+        <input type="hidden" name="_subject" value="New 11 Maharanis waitlist signup">
+        <button type="submit">Notify me</button>
+      </form>
+    </div>
+    <p class="wl-fine">No spam — just the drop, once, this Durga Puja. 👑</p>
   </section>
 
   <!-- FOOTER -->
