@@ -214,7 +214,7 @@ const PRODUCTS = [
   {slug:"samanvaya",   g:"f", maharani:"Rajarajeshwari Dheera",tee:"The Samanvaya Tee",   colour:"black", context:"Synthesis",        perspective:"Serenity",     verdict:"Conscious Honor",             price:499, earlyBird:499, buyUrl:""},
 ];
 const SIZES = ["XS","S","M","L","XL","XXL"];
-const EXTS = [".png",".jpg",".jpeg",".webp",".PNG",".JPG",".JPEG",".WEBP"];
+const EXTS = [".png",".jpg",".jpeg",".webp"];
 
 function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
 function placeholder(t,s){const d=el("div","ph");d.appendChild(el("div","pn",t));d.appendChild(el("div","ps",s));return d;}
@@ -224,18 +224,15 @@ function makeImg(src,alt,phT,phS,zoom){const img=el("img");img.src=src;img.alt=a
 /* probe one basename across extensions -> resolves to url or null */
 function probeOne(base){return new Promise(function(res){let i=0;const im=new Image();
   im.onload=function(){res(base+EXTS[i]);};im.onerror=function(){i++;if(i<EXTS.length)im.src=base+EXTS[i];else res(null);};im.src=base+EXTS[0];});}
-/* all mockups for a product+fit: <slug>-<g>-1..8, else single <slug> */
-/* mockups are just the product photos for a design (any colour/fit choice is at checkout).
-   name them: <slug>-1.png, <slug>-2.png ...  (or <slug>-front.png / <slug>-back.png). */
+/* Mockups: probe <slug>-f-1,2,... SEQUENTIALLY and stop at the first gap, so each card
+   fires only a few requests instead of hundreds. This is what prevents GitHub Pages
+   rate-limiting. Falls back to <slug>-1,2,... then a single <slug>. Files must be lowercase. */
+function probeSeq(prefix){return new Promise(function(res){var out=[];(function step(n){
+  probeOne(prefix+n).then(function(u){if(u){out.push(u);step(n+1);}else{res(out);}});})(1);});}
 function collectMockups(slug){
-  const names=["mockups/"+slug+"-front","mockups/"+slug+"-back"];
-  for(var n=1;n<=8;n++) names.push("mockups/"+slug+"-"+n);
-  ["f","m"].forEach(function(g){ names.push("mockups/"+slug+"-"+g+"-front","mockups/"+slug+"-"+g+"-back");
-    for(var k=1;k<=6;k++) names.push("mockups/"+slug+"-"+g+"-"+k); }); // also accepts older -f-/-m- names
-  return Promise.all(names.map(probeOne)).then(function(r){const list=r.filter(Boolean);
-    if(list.length)return list;
-    return probeOne("mockups/"+slug).then(function(one){return one?[one]:[];});
-  });
+  return probeSeq("mockups/"+slug+"-f-").then(function(a){ if(a.length)return a;
+    return probeSeq("mockups/"+slug+"-").then(function(b){ if(b.length)return b;
+      return probeOne("mockups/"+slug).then(function(one){return one?[one]:[];}); }); });
 }
 
 /* ---------- lightbox (zoom + pan + swipe) ---------- */
@@ -281,7 +278,11 @@ const court=document.getElementById("court");
 PRODUCTS.forEach(function(p){
   const card=el("div","mcard"),media=el("div","media"),flipper=el("div","flipper");
   const front=el("div","side front");
-  const frontImg=makeImg("maharanis/"+p.slug+"-"+p.g+".jpg",p.maharani,p.maharani,"add image",true);
+  const frontImg=el("img");frontImg.alt=p.maharani;frontImg.loading="lazy";
+  frontImg.onload=function(){frontImg.style.visibility="visible";};
+  frontImg.onerror=function(){frontImg.style.visibility="hidden";};
+  frontImg.addEventListener("click",function(){openLBfrom(frontImg);});
+  frontImg.src="maharanis/"+p.slug+"-"+p.g+".jpg";
   front.appendChild(frontImg);
   const back=el("div","side back");
   back.appendChild(makeImg("maharanis/"+p.slug+"-back.jpg",p.tee+" — the collapse","The Collapse","add image",true));
@@ -290,7 +291,7 @@ PRODUCTS.forEach(function(p){
   ["f","m"].forEach(function(gender){
     const b=el("button","gbtn"+(gender===p.g?" active":""),gender==="f"?"\u2640":"\u2642");
     b.addEventListener("click",function(){
-      frontImg.onerror=function(){const ph=placeholder(p.maharani,"add image");if(frontImg.parentNode)frontImg.parentNode.replaceChild(ph,frontImg);};
+      frontImg.style.visibility="hidden";
       frontImg.src="maharanis/"+p.slug+"-"+gender+".jpg";
       gt.querySelectorAll(".gbtn").forEach(function(x){x.classList.remove("active");});b.classList.add("active");});
     gt.appendChild(b);});
@@ -312,7 +313,7 @@ PRODUCTS.forEach(function(p){
   const shot=el("div","shot");
   shot.appendChild(el("span","tag",(p.price>p.earlyBird)?"Early-bird":"Debut drop"));
   const wrap=el("div","mockwrap"),dots=el("div","mock-dots");
-  const mimg=el("img");mimg.alt=p.tee+" mockup";mimg.loading="lazy";wrap.appendChild(mimg);
+  const mimg=el("img");mimg.alt=p.tee+" mockup";mimg.loading="lazy";mimg.onerror=function(){mimg.style.visibility="hidden";};mimg.onload=function(){mimg.style.visibility="visible";};wrap.appendChild(mimg);
   shot.appendChild(wrap);shot.appendChild(dots);card.appendChild(shot);
   const state={list:[],idx:0};
   function showMock(i){if(!state.list.length)return;state.idx=(i+state.list.length)%state.list.length;mimg.src=state.list[state.idx];
