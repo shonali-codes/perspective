@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Collections — PERSPECTIVE</title>
+<meta name="description" content="Meet the 11 Maharanis and wear the inquiry. PERSPECTIVE — an auditing brand for the mind, rooted in Anvikshiki.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Serif+Bengali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{color-scheme:dark;box-sizing:border-box;
+    --void:#0a0908;--ink:#120e08;--ink2:#1a140b;--gold:#c9a24b;--gold-hi:#ecd591;--gold-lo:#8c6c31;
+    --ivory:#efe7d6;--dim:#a2977f;--line:rgba(201,162,75,.20);
+    --gold-grad:linear-gradient(135deg,#8c6c31 0%,#c9a24b 34%,#ecd591 55%,#c9a24b 74%,#8c6c31 100%);
+    --edge:clamp(1.25rem,5vw,6rem)}
+  *,*::before,*::after{box-sizing:inherit}
+  html{scroll-behavior:smooth;scroll-padding-top:5rem;-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--void);color:var(--ivory);font-family:"Spectral",Georgia,serif;
+    font-size:clamp(1.02rem,.55vw + .92rem,1.16rem);line-height:1.78;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 0%,transparent 55%,rgba(0,0,0,.55) 100%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    background-size:auto,140px 140px;opacity:.05;mix-blend-mode:overlay}
+  main,header,footer{position:relative;z-index:1}
+  img{max-width:100%;display:block}
+  a{color:var(--gold-hi);text-decoration:none}
+  h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.05;margin:0}
+  .gold{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .site-head{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem var(--edge);
+    background:linear-gradient(180deg,rgba(10,9,8,.94),rgba(10,9,8,.55) 70%,transparent);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+  .site-head .mark span{font-family:"Cormorant Garamond",serif;font-size:1.15rem;letter-spacing:.34em;text-indent:.34em;color:var(--ivory)}
+  .nav{display:flex;gap:clamp(1rem,3vw,2.4rem);align-items:center}
+  .nav a{color:var(--dim);font-size:.86rem;letter-spacing:.02em;transition:color .3s;white-space:nowrap}
+  .nav a:hover{color:var(--gold-hi)}
+  @media(max-width:620px){.nav{gap:1.1rem}.nav a{font-size:.8rem}}
+  section{padding:clamp(3.5rem,8vw,7rem) var(--edge)}
+  .eyebrow{font-family:"Cormorant Garamond",serif;letter-spacing:.42em;text-indent:.42em;font-size:.82rem;color:var(--dim);text-transform:uppercase;text-align:center}
+  .sec-title{font-size:clamp(2.4rem,6vw,4.2rem);text-align:center;margin:.5rem 0 .4rem}
+  .sec-sub{text-align:center;color:var(--dim);font-style:italic;max-width:40rem;margin:0 auto 3rem;font-size:1.05rem}
+  .court{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:clamp(1.4rem,3vw,2.4rem);max-width:1220px;margin:0 auto}
+  .mcard{display:flex;flex-direction:column}
+  .media{position:relative;aspect-ratio:4/5;perspective:1500px}
+  .flipper{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.2,.7,.2,1)}
+  .media.flipped .flipper{transform:rotateY(180deg)}
+  .side{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--ink)}
+  .side img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+  .side.back{transform:rotateY(180deg)}
+  .ctrl{position:absolute;z-index:4;display:flex;gap:.3rem}
+  .gtoggle{top:.55rem;left:.55rem}
+  .gbtn{width:2rem;height:2rem;border-radius:50%;border:1px solid var(--line);background:rgba(10,9,8,.72);color:var(--dim);
+    font-family:"Cormorant Garamond",serif;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s}
+  .gbtn.active{background:var(--gold-grad);color:#15110a;border-color:transparent;font-weight:600}
+  .flipbtn{bottom:.55rem;right:.55rem}
+  .flipbtn button{border:1px solid var(--line);background:rgba(10,9,8,.72);color:var(--gold-hi);border-radius:999px;padding:.34rem .7rem;
+    font-family:"Spectral",serif;font-size:.74rem;letter-spacing:.06em;cursor:pointer;transition:all .25s}
+  .flipbtn button:hover{border-color:var(--gold)}
+  .caption{padding:.85rem .2rem 0;text-align:center}
+  .caption .nm{font-family:"Cormorant Garamond",serif;font-size:1.35rem;color:var(--gold-hi);line-height:1.1}
+  .caption .vd{font-size:.82rem;color:var(--dim);font-style:italic;margin:.1rem 0 .55rem}
+  .wear{display:inline-block;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ivory);border-bottom:1px solid var(--line);padding-bottom:.15rem;transition:color .25s,border-color .25s}
+  .wear:hover{color:var(--gold-hi);border-color:var(--gold)}
+  .ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.4rem;padding:1.2rem;
+    background:radial-gradient(130% 100% at 50% 0%,rgba(201,162,75,.08),transparent 70%),var(--ink)}
+  .ph .pn{font-family:"Cormorant Garamond",serif;font-size:1.25rem;color:var(--gold-hi)}
+  .ph .ps{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  #shop{background:linear-gradient(180deg,#07060500,rgba(201,162,75,.03) 50%,#07060500)}
+  .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:clamp(1.2rem,3vw,2.4rem);max-width:1220px;margin:0 auto}
+  .pcard{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:rgba(18,14,8,.5);display:flex;flex-direction:column;transition:border-color .4s,transform .4s,box-shadow .4s}
+  .pcard:hover{border-color:rgba(201,162,75,.5);transform:translateY(-3px)}
+  .pcard.flash{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,162,75,.5),0 10px 40px rgba(201,162,75,.15)}
+  .shot{aspect-ratio:4/5;overflow:hidden;position:relative;background:var(--ink)}
+  .mockwrap{position:absolute;inset:0}
+  .mockwrap img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+  .mock-dots{position:absolute;bottom:.6rem;left:50%;transform:translateX(-50%);display:flex;gap:.4rem;z-index:3}
+  .mock-dots span{width:.5rem;height:.5rem;border-radius:50%;background:rgba(239,231,214,.4);cursor:pointer;transition:background .25s}
+  .mock-dots span.on{background:var(--gold-hi)}
+  .tag{position:absolute;top:.7rem;right:.7rem;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;padding:.28rem .6rem;border-radius:999px;background:var(--gold-grad);color:#15110a;font-weight:600;z-index:3}
+  .pbody{padding:1.1rem 1.15rem 1.3rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+  .pbody .tee{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(--ivory);line-height:1.08}
+  .pbody .who{font-size:.86rem;color:var(--dim);font-style:italic;margin-top:-.15rem}
+  .pbody .eq{font-size:.8rem;color:var(--dim)}
+  .pbody .eq b{color:var(--gold-hi);font-weight:600;font-style:normal}
+  .price{display:flex;align-items:baseline;gap:.55rem;margin-top:.2rem}
+  .price .now{font-family:"Cormorant Garamond",serif;font-size:1.7rem;color:var(--gold-hi)}
+  .price .was{font-size:.95rem;color:var(--dim);text-decoration:line-through}
+  .controls{display:flex;gap:.55rem;margin-top:.5rem}
+  select.size{background:var(--ink2);color:var(--ivory);border:1px solid var(--line);border-radius:4px;padding:.55rem .6rem;font-family:"Spectral",serif;font-size:.9rem}
+  .buy{flex:1;display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:4px;padding:.6rem 1rem;cursor:pointer;
+    font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.05rem;letter-spacing:.04em;background:var(--gold-grad);color:#15110a;transition:filter .3s}
+  .buy:hover{filter:brightness(1.08)}
+  .colourdot{display:inline-block;width:.7rem;height:.7rem;border-radius:50%;border:1px solid var(--line);vertical-align:middle;margin-right:.3rem}
+  .note{max-width:44rem;margin:3rem auto 0;text-align:center;color:var(--dim);font-size:.9rem;font-style:italic}
+  footer{padding:3rem var(--edge) 4rem;text-align:center;border-top:1px solid var(--line);color:var(--dim)}
+  footer .eq{color:var(--gold-hi);font-family:"Cormorant Garamond",serif;font-size:1.3rem;margin:.4rem 0}
+  /* lightbox */
+  #lb{position:fixed;inset:0;z-index:100;background:rgba(5,4,3,.93);display:none;align-items:center;justify-content:center;padding:2rem;cursor:zoom-out}
+  #lb.open{display:flex}
+  #lb img{max-width:92vw;max-height:90vh;border-radius:6px;box-shadow:0 10px 70px rgba(0,0,0,.7);transform-origin:center center;transition:transform .1s linear;touch-action:none;will-change:transform;cursor:grab}
+  #lb img.grabbing{cursor:grabbing}
+  #lb .x{position:absolute;top:1.1rem;right:1.4rem;color:var(--ivory);font-size:2rem;font-family:"Cormorant Garamond",serif;cursor:pointer;z-index:2}
+  #lb .nav-arrow{position:absolute;top:50%;transform:translateY(-50%);color:var(--ivory);font-size:3.2rem;line-height:1;cursor:pointer;padding:.6rem 1rem;user-select:none;opacity:.6;transition:opacity .2s;z-index:2}
+  #lb .nav-arrow:hover{opacity:1}
+  #lb .prev{left:.3rem}#lb .next{right:.3rem}
+  #lb .lb-hint{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);color:var(--dim);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+  .lb-zoom{position:absolute;bottom:1rem;right:1.2rem;display:flex;gap:.45rem;z-index:3}
+  .lb-zoom button{width:2.5rem;height:2.5rem;border-radius:50%;border:1px solid var(--line);background:rgba(10,9,8,.72);color:var(--ivory);font-size:1.4rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .lb-zoom button:hover{border-color:var(--gold)}
+  @media(max-width:620px){#lb .nav-arrow{font-size:2.4rem;padding:.4rem .5rem}}
+  /* checkout modal */
+  #checkout{position:fixed;inset:0;z-index:120;background:rgba(5,4,3,.9);display:none;align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto}
+  #checkout.open{display:flex}
+  .form-card{position:relative;width:min(100%,460px);margin:auto;background:var(--ink2);border:1px solid var(--line);border-radius:8px;padding:1.6rem 1.5rem 1.8rem}
+  .form-card h3{font-size:1.9rem;color:var(--gold-hi)}
+  .co-meta{color:var(--dim);font-style:italic;font-size:.9rem;margin:.1rem 0 1.1rem}
+  .form-card label{display:block;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);margin:.75rem 0 .25rem}
+  .form-card input,.form-card textarea,.form-card select{width:100%;background:var(--void);color:var(--ivory);border:1px solid var(--line);border-radius:5px;padding:.6rem .7rem;font-family:"Spectral",serif;font-size:1rem}
+  .form-card input:focus,.form-card textarea:focus,.form-card select:focus{outline:none;border-color:var(--gold)}
+  .co-row{display:flex;gap:.8rem}.co-row>label{flex:1}
+  .co-total{margin:1.1rem 0 .3rem;font-size:1.05rem;color:var(--ivory)}
+  .co-total b{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(--gold-hi)}
+  .form-card .buy{width:100%;margin-top:.6rem;padding:.75rem;font-size:1.15rem}
+  .co-note{font-size:.78rem;color:var(--dim);font-style:italic;text-align:center;margin:.8rem 0 0;line-height:1.5}
+  .cx{position:absolute;top:.8rem;right:1rem;font-size:1.7rem;color:var(--dim);cursor:pointer;font-family:"Cormorant Garamond",serif}
+  .cx:hover{color:var(--ivory)}
+  .form-card .err{display:block;color:#e2766b;font-size:.78rem;line-height:1.3;margin:.25rem 0 .1rem;min-height:1em}
+  .form-card input.bad,.form-card textarea.bad{border-color:#e2766b}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <a class="mark" href="index.html"><span>PERSPECTIVE</span></a>
+  <nav class="nav"><a href="index.html">Home</a><a href="#meet">Meet the Maharanis</a><a href="#shop">Wear the Inquiry</a></nav>
+</header>
+<main>
+  <section id="meet">
+    <p class="eyebrow">The Royal Court</p>
+    <h2 class="sec-title gold">Meet the Maharanis</h2>
+    <p class="sec-sub">Eleven lenses you look through. Ten end in a collapse; one ends in an awakening.
+      Toggle her face, flip to see her collapse, tap to enlarge — then wear the inquiry.</p>
+    <div class="court" id="court"></div>
+  </section>
+  <section id="shop">
+    <p class="eyebrow">The Purchasing Zone</p>
+    <h2 class="sec-title gold">Wear the Inquiry</h2>
+    <p class="sec-sub">Oversized, heavyweight cotton. Her face on the front, her collapse on the back.
+      Choose your fit, your size — and claim your inquiry.</p>
+    <div class="shop-grid" id="shopGrid"></div>
+    <p class="note">Printed to order. Front: full-colour caricature. Back: the genealogy line-art
+      (gold on black, ink on white). Debut drop, this Durga Puja 2026.</p>
+  </section>
+</main>
+<footer>
+  <div class="eq">Context + Perspective = Choice</div>
+  <p>PERSPECTIVE — an auditing brand for the mind, rooted in Anvikshiki.<br>Created by Sonali Dutta, by God's grace.<br>
+  Order queries: <a href="mailto:perspectivethecoreaudit@gmail.com">perspectivethecoreaudit@gmail.com</a><br>
+  Instagram: <a href="https://instagram.com/perspective.the.queen" target="_blank" rel="noopener">@perspective.the.queen</a></p>
+</footer>
+
+<div id="lb"><span class="x">&times;</span><span class="nav-arrow prev">&#8249;</span><img alt="enlarged"><span class="nav-arrow next">&#8250;</span><div class="lb-zoom"><button class="zout" title="Zoom out">&minus;</button><button class="zin" title="Zoom in">+</button></div><span class="lb-hint">scroll / pinch to zoom · double-tap · swipe ‹ ›</span></div>
+
+<div id="checkout"><div class="form-card">
+  <span class="cx">&times;</span>
+  <h3 id="co-title">Tee</h3>
+  <p class="co-meta" id="co-meta"></p>
+  <label>Full name</label><input id="co-name" autocomplete="name" required><span class="err" id="e-name"></span>
+  <label>Email</label><input id="co-email" type="email" inputmode="email" autocomplete="email" required><span class="err" id="e-email"></span>
+  <label>Phone / WhatsApp</label><input id="co-phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile" required><span class="err" id="e-phone"></span>
+  <label>Full shipping address (with pincode)</label><textarea id="co-addr" rows="3" autocomplete="street-address" required></textarea><span class="err" id="e-addr"></span>
+  <label>Front face (which face is printed)</label>
+  <select id="co-face"><option value="Female">Female front</option><option value="Male">Male front</option></select>
+  <div class="co-row">
+    <label>Size<select id="co-size"></select></label>
+    <label>Quantity<input id="co-qty" type="number" min="1" max="10" value="1"></label>
+  </div>
+  <div class="co-total">Total: <b id="co-total">₹499</b></div>
+  <button class="buy" id="co-submit">Proceed to payment</button>
+  <p class="co-note">Your details are used only to ship your order and confirm it with you.<br>Secure checkout · you'll complete payment on the next step.<br>Questions about your order? Write to <a href="mailto:perspectivethecoreaudit@gmail.com">perspectivethecoreaudit@gmail.com</a></p>
+</div></div>
+
+<script>
+/* ============================================================================
+   CONFIG — set these two, then everything works:
+     FORM_ENDPOINT : where customer details are saved to YOU (so you keep the info).
+                     Easiest: a free Formspree form -> "https://formspree.io/f/xxxxxxx"
+                     (or a Google Apps Script web-app URL). Leave "" to just log to console.
+     PAYMENT_URL   : a global Razorpay/Instamojo payment link (fallback).
+   PER-PRODUCT payment link: set buyUrl on that product below (overrides PAYMENT_URL).
+
+   MOCKUPS (multiple photos per fit) — drop files in /mockups/.
+     The number is just the ORDER the photos show (it does NOT describe the photo),
+     so never put "front"/"back" in the number form:
+        <slug>-f-1.png , <slug>-f-2.png , <slug>-f-3.png ...   (female fit)
+        <slug>-m-1.png , <slug>-m-2.png , ...                  (male fit)
+     Or, if you prefer literal names, use:  <slug>-f-front.png , <slug>-f-back.png
+     Example (Dheera = slug "samanvaya"): samanvaya-f-1.png, samanvaya-f-2.png
+                                    or:    samanvaya-f-front.png, samanvaya-f-back.png
+     .png/.jpg/.jpeg/.webp all work. Falls back to a single /mockups/<slug>.png. Up to 8 per fit.
+   ============================================================================ */
+/* razorpay.me does NOT take an amount in the URL (that 404s). The customer types the amount on the Razorpay page; the checkout tells them the exact total to enter, and you verify the paid amount before fulfilling. To LOCK the amount while keeping quantity, create a Razorpay Payment Button or Payment Page and put its URL in PAYMENT_URL. */
+const CONFIG = { FORM_ENDPOINT:"https://formspree.io/f/mqparreb", PAYMENT_URL:"https://razorpay.me/@shonalicodes" };
+const CURRENCY = "\u20B9";
+const PRODUCTS = [
+  {slug:"kshetra",     g:"f", maharani:"Maharani Adhikarini",  tee:"The Kshetra Tee",     colour:"white", context:"Territory",        perspective:"Ownership",    verdict:"Aggressive Shunning",         price:499, earlyBird:499, buyUrl:""},
+  {slug:"sarvabhauma", g:"f", maharani:"Samrajni Shasana",     tee:"The Sarvabhauma Tee", colour:"white", context:"The One Truth",     perspective:"Dominion",     verdict:"Cultural Bullying",           price:499, earlyBird:499, buyUrl:""},
+  {slug:"akshepa",     g:"m", maharani:"Maharani Pratirodha",  tee:"The Akshepa Tee",     colour:"black", context:"The Critique",     perspective:"Resistance",   verdict:"Intellectual Warfare",        price:499, earlyBird:499, buyUrl:""},
+  {slug:"pradarsana",  g:"f", maharani:"Maharani Ghosana",     tee:"The Pradarsana Tee",  colour:"black", context:"The Spectacle",    perspective:"Proclamation", verdict:"Performative Gatekeeping",    price:499, earlyBird:499, buyUrl:""},
+  {slug:"vivada",      g:"m", maharani:"Maharani Mimansa",     tee:"The Vivada Tee",      colour:"white", context:"The Dispute",      perspective:"Scrutiny",     verdict:"Ideological Brawling",        price:499, earlyBird:499, buyUrl:""},
+  {slug:"maryada",     g:"m", maharani:"Maharani Bikshobha",   tee:"The Maryada Tee",     colour:"black", context:"The Norm",         perspective:"Agitation",    verdict:"Unbothered",                  price:499, earlyBird:499, buyUrl:""},
+  {slug:"parivartana", g:"f", maharani:"Maharani Virahini",    tee:"The Parivartana Tee", colour:"white", context:"The Upheaval",     perspective:"The Forsaken", verdict:"Passive-Aggressive Alienation",price:499, earlyBird:499, buyUrl:""},
+  {slug:"utsava",      g:"m", maharani:"Maharani Bairagini",   tee:"The Utsava Tee",      colour:"white", context:"The Festival",     perspective:"Renunciation", verdict:"Performing Martyrdom",        price:499, earlyBird:499, buyUrl:""},
+  {slug:"apavada",     g:"f", maharani:"Maharani Sankochita",  tee:"The Apavada Tee",     colour:"white", context:"The Condemnation", perspective:"Withdrawal",   verdict:"Culinary Abandonment",        price:499, earlyBird:499, buyUrl:""},
+  {slug:"niyama",      g:"m", maharani:"Maharani Anubrata",    tee:"The Niyama Tee",      colour:"white", context:"The Rule",         perspective:"Obedience",    verdict:"Extreme Fasting",             price:499, earlyBird:499, buyUrl:""},
+  {slug:"samanvaya",   g:"f", maharani:"Rajarajeshwari Dheera",tee:"The Samanvaya Tee",   colour:"black", context:"Synthesis",        perspective:"Serenity",     verdict:"Conscious Honor",             price:499, earlyBird:499, buyUrl:""},
+];
+const SIZES = ["XS","S","M","L","XL","XXL"];
+const EXTS = [".png",".jpg",".jpeg",".webp",".PNG",".JPG",".JPEG",".WEBP"];
+
+function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function placeholder(t,s){const d=el("div","ph");d.appendChild(el("div","pn",t));d.appendChild(el("div","ps",s));return d;}
+function makeImg(src,alt,phT,phS,zoom){const img=el("img");img.src=src;img.alt=alt;img.loading="lazy";
+  img.onerror=function(){const p=placeholder(phT,phS);if(img.parentNode)img.parentNode.replaceChild(p,img);};
+  if(zoom)img.addEventListener("click",function(){openLBfrom(img);});return img;}
+/* probe one basename across extensions -> resolves to url or null */
+function probeOne(base){return new Promise(function(res){let i=0;const im=new Image();
+  im.onload=function(){res(base+EXTS[i]);};im.onerror=function(){i++;if(i<EXTS.length)im.src=base+EXTS[i];else res(null);};im.src=base+EXTS[0];});}
+/* all mockups for a product+fit: <slug>-<g>-1..8, else single <slug> */
+/* mockups are just the product photos for a design (any colour/fit choice is at checkout).
+   name them: <slug>-1.png, <slug>-2.png ...  (or <slug>-front.png / <slug>-back.png). */
+function collectMockups(slug){
+  const names=["mockups/"+slug+"-front","mockups/"+slug+"-back"];
+  for(var n=1;n<=8;n++) names.push("mockups/"+slug+"-"+n);
+  ["f","m"].forEach(function(g){ names.push("mockups/"+slug+"-"+g+"-front","mockups/"+slug+"-"+g+"-back");
+    for(var k=1;k<=6;k++) names.push("mockups/"+slug+"-"+g+"-"+k); }); // also accepts older -f-/-m- names
+  return Promise.all(names.map(probeOne)).then(function(r){const list=r.filter(Boolean);
+    if(list.length)return list;
+    return probeOne("mockups/"+slug).then(function(one){return one?[one]:[];});
+  });
+}
+
+/* ---------- lightbox (zoom + pan + swipe) ---------- */
+const lb=document.getElementById("lb"),lbImg=lb.querySelector("img"),lbX=lb.querySelector(".x"),
+      lbPrev=lb.querySelector(".prev"),lbNext=lb.querySelector(".next"),lbZin=lb.querySelector(".zin"),lbZout=lb.querySelector(".zout");
+let LBlist=[],LBidx=0,scale=1,tx=0,ty=0;
+function applyT(){lbImg.style.transform="translate("+tx+"px,"+ty+"px) scale("+scale+")";}
+function resetZoom(){scale=1;tx=0;ty=0;applyT();}
+function setScale(s){scale=Math.min(5,Math.max(1,s));if(scale<=1){tx=0;ty=0;}applyT();}
+function lbShow(){if(LBlist.length){lbImg.src=LBlist[LBidx];resetZoom();}}
+function closeLB(){lb.classList.remove("open");}
+function openLBlist(list,idx){LBlist=list.slice();LBidx=Math.max(0,idx||0);lb.classList.add("open");lbShow();}
+function openLBfrom(img){const card=img.closest(".mcard");
+  const imgs=card?Array.prototype.slice.call(card.querySelectorAll("img")):[img];
+  openLBlist(imgs.map(function(i){return i.currentSrc||i.src;}),imgs.indexOf(img));}
+function lbStep(n){if(LBlist.length<2)return;LBidx=(LBidx+n+LBlist.length)%LBlist.length;lbShow();}
+lbX.addEventListener("click",function(e){e.stopPropagation();closeLB();});
+lbPrev.addEventListener("click",function(e){e.stopPropagation();lbStep(-1);});
+lbNext.addEventListener("click",function(e){e.stopPropagation();lbStep(1);});
+lbZin.addEventListener("click",function(e){e.stopPropagation();setScale(scale+0.4);});
+lbZout.addEventListener("click",function(e){e.stopPropagation();setScale(scale-0.4);});
+lbImg.addEventListener("click",function(e){e.stopPropagation();});
+lbImg.addEventListener("dblclick",function(e){e.stopPropagation();setScale(scale>1?1:2.5);});
+lb.addEventListener("click",function(e){if(e.target===lb)closeLB();});
+lb.addEventListener("wheel",function(e){e.preventDefault();setScale(scale+(e.deltaY<0?0.25:-0.25));},{passive:false});
+document.addEventListener("keydown",function(e){if(!lb.classList.contains("open"))return;
+  if(e.key==="ArrowLeft")lbStep(-1);else if(e.key==="ArrowRight")lbStep(1);else if(e.key==="Escape")closeLB();
+  else if(e.key==="+"||e.key==="=")setScale(scale+0.4);else if(e.key==="-"||e.key==="_")setScale(scale-0.4);});
+let drag=false,dx0=0,dy0=0;
+lbImg.addEventListener("mousedown",function(e){if(scale>1){drag=true;dx0=e.clientX-tx;dy0=e.clientY-ty;lbImg.classList.add("grabbing");e.preventDefault();}});
+window.addEventListener("mousemove",function(e){if(drag){tx=e.clientX-dx0;ty=e.clientY-dy0;applyT();}});
+window.addEventListener("mouseup",function(){drag=false;lbImg.classList.remove("grabbing");});
+let tmode=null,sx=0,sy=0,ptx=0,pty=0,d0=0,sc0=1;
+function tdist(t){return Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);}
+lb.addEventListener("touchstart",function(e){if(e.touches.length===2){tmode="pinch";d0=tdist(e.touches);sc0=scale;}
+  else if(e.touches.length===1){tmode=(scale>1?"pan":"swipe");sx=e.touches[0].clientX;sy=e.touches[0].clientY;ptx=tx;pty=ty;}},{passive:true});
+lb.addEventListener("touchmove",function(e){if(tmode==="pinch"&&e.touches.length===2){e.preventDefault();setScale(sc0*tdist(e.touches)/d0);}
+  else if(tmode==="pan"&&e.touches.length===1){e.preventDefault();tx=ptx+(e.touches[0].clientX-sx);ty=pty+(e.touches[0].clientY-sy);applyT();}},{passive:false});
+lb.addEventListener("touchend",function(e){if(tmode==="swipe"){const dd=e.changedTouches[0].clientX-sx;if(Math.abs(dd)>40)lbStep(dd<0?1:-1);}if(e.touches.length===0)tmode=null;},{passive:true});
+
+/* ---------- Meet the Maharanis ---------- */
+const court=document.getElementById("court");
+PRODUCTS.forEach(function(p){
+  const card=el("div","mcard"),media=el("div","media"),flipper=el("div","flipper");
+  const front=el("div","side front");
+  const frontImg=makeImg("maharanis/"+p.slug+"-"+p.g+".jpg",p.maharani,p.maharani,"add image",true);
+  front.appendChild(frontImg);
+  const back=el("div","side back");
+  back.appendChild(makeImg("maharanis/"+p.slug+"-back.jpg",p.tee+" — the collapse","The Collapse","add image",true));
+  flipper.appendChild(front);flipper.appendChild(back);media.appendChild(flipper);
+  const gt=el("div","ctrl gtoggle");
+  ["f","m"].forEach(function(gender){
+    const b=el("button","gbtn"+(gender===p.g?" active":""),gender==="f"?"\u2640":"\u2642");
+    b.addEventListener("click",function(){
+      frontImg.onerror=function(){const ph=placeholder(p.maharani,"add image");if(frontImg.parentNode)frontImg.parentNode.replaceChild(ph,frontImg);};
+      frontImg.src="maharanis/"+p.slug+"-"+gender+".jpg";
+      gt.querySelectorAll(".gbtn").forEach(function(x){x.classList.remove("active");});b.classList.add("active");});
+    gt.appendChild(b);});
+  media.appendChild(gt);
+  const fb=el("div","ctrl flipbtn"),fbtn=el("button",null,"flip \u21BB");
+  fbtn.addEventListener("click",function(){media.classList.toggle("flipped");fbtn.textContent=media.classList.contains("flipped")?"back \u21BA":"flip \u21BB";});
+  fb.appendChild(fbtn);media.appendChild(fb);card.appendChild(media);
+  const cap=el("div","caption");cap.appendChild(el("div","nm",p.maharani));cap.appendChild(el("div","vd",p.verdict));
+  const wear=el("a","wear","Wear this →");wear.href="#prod-"+p.slug;
+  wear.addEventListener("click",function(e){e.preventDefault();const t=document.getElementById("prod-"+p.slug);
+    if(t){t.scrollIntoView({behavior:"smooth",block:"center"});t.classList.add("flash");setTimeout(function(){t.classList.remove("flash");},1600);}});
+  cap.appendChild(wear);card.appendChild(cap);court.appendChild(card);
+});
+
+/* ---------- Wear the Inquiry (shop) ---------- */
+const grid=document.getElementById("shopGrid");
+PRODUCTS.forEach(function(p){
+  const card=el("div","pcard");card.id="prod-"+p.slug;
+  const shot=el("div","shot");
+  shot.appendChild(el("span","tag",(p.price>p.earlyBird)?"Early-bird":"Debut drop"));
+  const wrap=el("div","mockwrap"),dots=el("div","mock-dots");
+  const mimg=el("img");mimg.alt=p.tee+" mockup";mimg.loading="lazy";wrap.appendChild(mimg);
+  shot.appendChild(wrap);shot.appendChild(dots);card.appendChild(shot);
+  const state={list:[],idx:0};
+  function showMock(i){if(!state.list.length)return;state.idx=(i+state.list.length)%state.list.length;mimg.src=state.list[state.idx];
+    dots.querySelectorAll("span").forEach(function(d,di){d.classList.toggle("on",di===state.idx);});}
+  function buildDots(){dots.innerHTML="";if(state.list.length>1){state.list.forEach(function(_,di){const dd=el("span");dd.addEventListener("click",function(){showMock(di);});dots.appendChild(dd);});}}
+  collectMockups(p.slug).then(function(list){
+    if(!list.length){wrap.replaceChildren(placeholder(p.tee,"mockup — add image"));return;}
+    state.list=list;buildDots();showMock(0);});
+  mimg.addEventListener("click",function(){if(state.list.length)openLBlist(state.list,state.idx);});
+  const body=el("div","pbody");body.appendChild(el("div","tee",p.tee));
+  const who=el("div","who");const dot=el("span","colourdot");dot.style.background=p.colour==="black"?"#111":"#f3f1ea";
+  who.appendChild(dot);who.appendChild(document.createTextNode(p.maharani+" · "+p.colour+" tee"));body.appendChild(who);
+  const eq=el("div","eq");eq.appendChild(document.createTextNode(p.context+" + "+p.perspective+" = "));eq.appendChild(el("b",null,p.verdict));body.appendChild(eq);
+  const price=el("div","price");price.appendChild(el("span","now",CURRENCY+p.earlyBird));if(p.price>p.earlyBird)price.appendChild(el("span","was",CURRENCY+p.price));body.appendChild(price);
+  const controls=el("div","controls"),sel=el("select","size");
+  SIZES.forEach(function(s){const o=el("option",null,s);o.value=s;sel.appendChild(o);});
+  const buy=el("button","buy","Wear the Inquiry");
+  buy.addEventListener("click",function(){openCheckout(p,sel.value);});
+  controls.appendChild(sel);controls.appendChild(buy);body.appendChild(controls);card.appendChild(body);grid.appendChild(card);
+});
+
+/* ---------- checkout ---------- */
+const co=document.getElementById("checkout");let coProd=null;
+function val(id){return (document.getElementById(id).value||"").trim();}
+function setErr(f,e,msg){var fe=document.getElementById(f),ee=document.getElementById(e);if(msg){fe.classList.add("bad");ee.textContent=msg;}else{fe.classList.remove("bad");ee.textContent="";}}
+function clearErrs(){["name","email","phone","addr"].forEach(function(k){setErr("co-"+k,"e-"+k,"");});}
+var RE_EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+var RE_PHONE=/^[6-9]\d{9}$/;
+function qtyVal(){var q=parseInt((document.getElementById("co-qty")||{}).value||"1",10);if(isNaN(q)||q<1)q=1;if(q>10)q=10;return q;}
+function updTotal(){if(coProd)document.getElementById("co-total").textContent=CURRENCY+(coProd.earlyBird*qtyVal());}
+function payURL(total){return (coProd.buyUrl&&coProd.buyUrl.trim())||CONFIG.PAYMENT_URL||"";}
+function openCheckout(p,size){coProd=p;
+  document.getElementById("co-title").textContent=p.tee;
+  document.getElementById("co-meta").textContent=p.maharani+" \u00b7 "+p.colour+" tee";
+  document.getElementById("co-face").value=(p.g==="m"?"Male":"Female");
+  var cs=document.getElementById("co-size");cs.innerHTML="";SIZES.forEach(function(s){var o=el("option",null,s);o.value=s;if(s===size)o.selected=true;cs.appendChild(o);});
+  var q=document.getElementById("co-qty");if(q)q.value="1";
+  updTotal();clearErrs();co.classList.add("open");}
+var _qel=document.getElementById("co-qty");if(_qel)_qel.addEventListener("input",updTotal);
+co.querySelector(".cx").addEventListener("click",function(){co.classList.remove("open");});
+co.addEventListener("click",function(e){if(e.target===co)co.classList.remove("open");});
+document.getElementById("co-submit").addEventListener("click",function(){
+  var name=val("co-name"),email=val("co-email"),addr=val("co-addr"),size=val("co-size"),face=val("co-face");
+  var phone=val("co-phone").replace(/[\s-]/g,"").replace(/^\+?91/,"");
+  clearErrs();var ok=true;
+  if(name.length<2){setErr("co-name","e-name","Please enter your full name.");ok=false;}
+  if(!RE_EMAIL.test(email)){setErr("co-email","e-email","Enter a valid email address.");ok=false;}
+  if(!RE_PHONE.test(phone)){setErr("co-phone","e-phone","Enter a valid 10-digit mobile number.");ok=false;}
+  if(addr.length<12){setErr("co-addr","e-addr","Enter your full address, including pincode.");ok=false;}
+  if(!ok)return;
+  var qty=qtyVal(),total=coProd.earlyBird*qty;
+  var payload={product:coProd.tee,slug:coProd.slug,maharani:coProd.maharani,colour:coProd.colour,front_face:face,size:size,qty:qty,unit_price:coProd.earlyBird,amount:total,currency:"INR",name:name,email:email,phone:phone,address:addr,placed_at:new Date().toISOString()};
+  var pay=payURL(total);
+  function done(){co.classList.remove("open");
+    if(pay){window.open(pay,"_blank","noopener");alert("Your details are saved \ud83d\ude4f On the Razorpay page, please enter \u20b9"+total+" and pay. We'll confirm your order by email/WhatsApp.");}
+    else{alert("Thank you \ud83d\ude4f Your order request is saved \u2014 we'll reach out to confirm payment & delivery.");}}
+  if(CONFIG.FORM_ENDPOINT){
+    fetch(CONFIG.FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(payload)}).then(done).catch(done);
+  }else{console.log("ORDER:",payload);done();}
+});
+</script>
+</body>
+</html>
