@@ -33,7 +33,12 @@
   .nav{display:flex;gap:clamp(1rem,3vw,2.4rem);align-items:center}
   .nav a{color:var(--dim);font-size:.86rem;letter-spacing:.02em;transition:color .3s;white-space:nowrap}
   .nav a:hover{color:var(--gold-hi)}
-  @media(max-width:620px){.nav{gap:1.1rem}.nav a{font-size:.8rem}}
+  @media(max-width:620px){
+    .site-head{flex-wrap:wrap;justify-content:center;gap:.35rem .9rem;padding:.6rem 1rem}
+    .site-head .mark span{font-size:1rem;letter-spacing:.18em;text-indent:.18em}
+    .nav{flex-wrap:wrap;justify-content:center;gap:.5rem .9rem;width:100%}
+    .nav a{font-size:.8rem}
+  }
   section{padding:clamp(3.5rem,8vw,7rem) var(--edge)}
   .eyebrow{font-family:"Cormorant Garamond",serif;letter-spacing:.42em;text-indent:.42em;font-size:.82rem;color:var(--dim);text-transform:uppercase;text-align:center}
   .sec-title{font-size:clamp(2.4rem,6vw,4.2rem);text-align:center;margin:.5rem 0 .4rem}
